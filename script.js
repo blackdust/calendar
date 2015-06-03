@@ -4,9 +4,9 @@ jQuery(document).ready(function(){
 
    var myDate = new Date();
    //以下三行是调试代码
-   // myDate.setYear(2015);
-   //myDate.setMonth(8);
-   //myDate.setDate(1);
+    //myDate.setYear(2015);
+    //myDate.setMonth(3);
+    //myDate.setDate(1);
 
    $('h2').text(myDate.toLocaleDateString());
 
@@ -61,12 +61,14 @@ jQuery(document).ready(function(){
   var dayscount= function(num)
 
   {
-   $headyear=$('#year').text();
-   $headmonth=$('#month').text();
-   date2.setYear($headyear);
-   date2.setMonth($headmonth-1)
+   //$headyear=$('#year').text();
+   //$headmonth=$('#month').text();
+   //date2.setYear($headyear);
+   //date2.setMonth($headmonth-1)
+   //currentmonth2=date2.getMonth();
+
    date2.setYear(currentyear);
-   //date2.setMonth(currentmonth2)
+   date2.setMonth(currentmonth2)
    //date2.setYear(2015);
    //date2.setMonth(8)
    date2.setDate(num);
@@ -136,8 +138,8 @@ $('td').each(function()
   {//$(this).text(array[2])
     if(array[2]==currentdate)
     {
-     $(this).css('color','red')
-     $(this).css('background-color','rgb(255,130,150)')
+     $(this).css({'color':'red','background-color':'rgb(255,110,150)'}).attr('abc')
+     //$(this).css('background-color','rgb(255,130,150)')
     }
   }
   else
@@ -235,23 +237,31 @@ $("button:eq(0)").click(function()
 
 $('td').each(function()
 {
- 
+ $(this).removeAttr(abc);
+ //$(this).removeClass(); //应该不是因为没有class
+ //$(this).css('background-color', null);//格式错误
+ //$(this).removeAttr('color');//之前已经设置过attr才行
+
  var $a=$(this).text()
  var array=[];
  array=$a.split("/"); 
+
  if(currentmonth==array[1]&&array[0]==currentyear)
   {//$(this).text(array[2])
     if(array[2]==currentdate)
     {
-     $(this).css('color','red')
-     $(this).css('background-color','rgb(255,130,150)')
+     $(this).css('color','red').attr('abc')
+     $(this).css('background-color','rgb(255,130,150)').attr('abc')
+
     }
   }
   else
   {//$(this).text(array[2]);
-   $(this).css('color','#C0C0C0')
+   $(this).css('color','#C0C0C0').attr('abc')
   }
   
+  //$(this).removeAttr(abc);
+  //$(this).css('background-color','white')//最终解决方案，并且，对removeattr，removeclass方法失效产生怀疑。
 
 });
 
